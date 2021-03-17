@@ -15,6 +15,10 @@ app.get('/',(req,res)=> {
 	res.sendFile(path.join(__dirname+'/auction.html'));
 });
 
+app.get('/teamlist',(req,res)=> {
+	res.sendFile(path.join(__dirname+'/teamlist.html'));
+});
+
 app.post('/sold',(req,res)=>{
 	var x = Object.values(req.body);
 	var _json = JSON.stringify(x);
