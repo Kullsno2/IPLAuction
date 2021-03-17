@@ -148,7 +148,7 @@ $(document).ready(function(){
 	        contentType: "application/json"
         });
 
-        location.reload();
+        // location.reload();
 
 	}
 
