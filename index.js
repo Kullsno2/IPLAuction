@@ -40,6 +40,29 @@ app.post('/sold',(req,res)=>{
 	});
 });
 
+app.post('/remove',(req,res)=>{
+	var x = Object.values(req.body);
+	var _json = JSON.stringify(x);
+	var _jsonVal = JSON.parse(_json);
+
+	var collection_name = _jsonVal[0]["Team_name"];
+	var jsondata = _jsonVal[0];
+
+	MongoClient.connect(uri, function(err,db){
+		if(err)
+			throw err;
+		var dbo = db.db("auction");
+	// 	// dbo.collection(collection_name).insertOne(jsondata, function(err,res){
+	// 	// 	if(err)
+	// 	// 		throw err;
+	// 	// 	console.log("Document Inserted");
+	// 	// });
+		dbo.collection(jsondata).findOneAndDelete({},{"sort": { "_id": -1 }});
+		console.log("Document Removed");
+		db.close();
+	});
+});
+
 app.get('/A',(req,res)=>{
 	MongoClient.connect(uri,async function(err,db){
 		if(err)

@@ -108,7 +108,7 @@ $(document).ready(function(){
 
 
 	function submit(){
-		
+
 		var player_name = document.getElementById('searchBar').value; //Player Name
 
 		if(player_name.length > 0)
@@ -123,7 +123,7 @@ $(document).ready(function(){
 
 		var price = document.getElementById("Price").value;
 
-		if(player_name.length == 0 || team_name == "Choose Team" || price == "Enter Price Sold"){
+		if(player_name.length == 0 || team_name == "Choose Team" || price == ""){
 			document.getElementById("missing").innerHTML = "Missing Fields";
 			return ;
 		}
@@ -148,8 +148,28 @@ $(document).ready(function(){
 	        contentType: "application/json"
         });
 
-        // location.reload();
+        setTimeout(function(){ location.reload(); }, 3000);
 
+    	$('#canvas').css('display', '');
+    	document.getElementById("throw-confetti").innerHTML = "SOLD";
+	}
+
+	function remove_last_transfer(team_name){
+		var _json = {
+			'Team_name' : team_name
+        };
+		$.ajax({
+	        type: 'POST',
+	        url: '/remove',
+	        data : JSON.stringify(_json),
+	        dataType: "json",
+	        contentType: "application/json"
+        });
+	}
+
+	function remove_datalist(player){
+		document.querySelector('option[value="'+player+'"]').disabled = true;
+		// console.log(player_id);
 	}
 
 	function createTable(id,data){
@@ -173,6 +193,7 @@ $(document).ready(function(){
         	var td1 = document.createElement("td");
         	var td2 = document.createElement("td");
         	var td_name = document.createTextNode(data[item]["Player_name"]);
+        	remove_datalist(data[item]["Player_name"]);
         	var td_price;
         	if(data[item]["Price"] >= 1) {
         		td_price = document.createTextNode("₹ "+data[item]["Price"]+"C");
@@ -186,12 +207,17 @@ $(document).ready(function(){
         	tr.appendChild(td2);
         	tbody.appendChild(tr);
         }
-        var remaining = 100.00 - price;
+        var remaining = 80.00 - price;
         remaining = remaining.toFixed(2);
+        if(remaining < 0.00){
+        	remove_last_transfer(id);
+        	alert("Purse amount exceeded!");
+        	location.reload();
+      	}
         var tr = document.createElement("tr");
         var td = document.createElement("td");
         var td2 = document.createElement("td");
-        var purse = document.createTextNode("Purse Remaining");
+        var purse = document.createTextNode("Purse Remaining: ");
       	td.setAttribute("class","purse");
       	var content;
       	if(remaining >= 1) {
@@ -203,16 +229,19 @@ $(document).ready(function(){
       	} 
 
       	if(remaining == parseInt(remaining)) {
-      		content = "₹ " + parseInt(remaining)+"C / "+(data.length);
+      		content = "₹ " + parseInt(remaining)+"C"+'<span style="color: red;">&#9660</span>'+"/ "+(data.length)+'<span style="color: green;">&#9650</span>';
       	}
-        var price_remain = document.createTextNode(content);
+      	if(remaining == 80.00){
+      		content = "₹ " + parseInt(remaining)+"C"+" / "+(data.length);
+      	}
+        // var price_remain = document.createTextNode(content);
+        td2.innerHTML = content;
         td2.setAttribute("class","price");
         td.appendChild(purse);
-        td2.appendChild(price_remain);
+        // td2.appendChild(price_remain);
         tr.appendChild(td);
         tr.appendChild(td2);
         tbody.appendChild(tr);
-        
         table.appendChild(tbody);
         document.getElementById(id).appendChild(table);
 	}
