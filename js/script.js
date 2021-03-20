@@ -221,11 +221,11 @@ $(document).ready(function(){
       	td.setAttribute("class","purse");
       	var content;
       	if(remaining >= 1) {
-      		content = "₹ " + remaining+"C / "+(data.length);
+      		content = "₹ " + remaining+"C"+'<span style="color: red;">&#9660</span>'+"/ "+(data.length)+'<span style="color: green;">&#9650</span>';
       	} else if(remaining < 1 && remaining > 0) {
-      		content = "₹ " + remaining*100+"L / "+(data.length);
+      		content = "₹ " + remaining*100+"L"+'<span style="color: red;">&#9660</span>'+"/ "+(data.length)+'<span style="color: green;">&#9650</span>';
       	} else if(remaining == 0) {
-      		content = "₹ " + remaining*100+" / "+(data.length);
+      		content = "₹ " + remaining*100+'<span style="color: red;">&#9660</span>'+" / "+(data.length)+'<span style="color: green;">&#9650</span>';
       	} 
 
       	if(remaining == parseInt(remaining)) {
