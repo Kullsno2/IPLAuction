@@ -8,33 +8,68 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-	<title>Team List - 2021</title>
+	<title>Auction 2021</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 	<link rel="icon" type="image/png" href="https://www.flaticon.com/svg/vstatic/svg/2865/2865142.svg?token=exp=1616004695~hmac=411da95970b3cb8f07fb85f1d8a8260c" >
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/confetti.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Yantramanav&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript" src="./js/confetti.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
 </head>
 
 <body>
-	<div class="container">
+	<div>
+	<!-- <canvas id="canvas" style="position: absolute;display: none;"></canvas> -->
+	<div class="container" style="position: relative;">
 		<h1 style="background-color: white;color:black;margin-top: 10px;">IPL AUCTION 2021</h1>
-		
+<!-- 		<div class="row" id="bar">
+			<input class="col-lg-3" list="Player-datalist" type="text" id="searchBar" placeholder="Select Player">
+			<datalist id="Player-datalist"></datalist> -->
+			<!-- <select id="Player-dropdown" name="Player"></select> -->
+			<!-- <select class="col-lg-3" id="Team-dropdown" name="Team">
+				<option selected="true" disabled>Choose Team</option>
+				<option value="A">Mayira Pochu</option>
+				<option value="B">Sumo</option>
+				<option value="C">Aanch Boonch XI</option>
+				<option value="D">Lapalapa Naa Ilapa XI</option>
+				<option value="E">Aelay Cricket Club - ACC</option>
+				<option value="F">Vantha Vettuvom</option>
+				<option value="G">Ellaam Kirubai</option>
+				<option value="H">Akkamala Energy Boys</option>
+			</select>
+			<input class="col-lg-2" type="text" name="Price" id="Price" placeholder="Enter Price Sold">
+			<button class="col-lg-1" type="submit"  id="throw-confetti" onclick="submit()">SELL</button>
+			<div id="missing"></div>
+		</div> -->
 		<div class="row" id="top">
-			<div id="A" class="box col"><h1>A</h1></div>
-			<div id="B" class="box col"><h1>B</h1></div>
-			<div id="C" class="box col"><h1>C</h1></div>
-			<div id="D" class="box col"><h1>D</h1></div>
+			<div id="A" class="box col"><h1>Mayira Pochu</h1></div>
+			<div id="B" class="box col"><h1>Sumo</h1></div>
+			<div id="C" class="box col"><h1>Aanch Boonch XI</h1></div>
+			<div id="D" class="box col"><h1>Lapalapa Naa Ilapa XI</h1></div>
 		</div>
 		<div class="row" id="bottom">
-			<div id="E" class="box col"><h1>E</h1></div>
-			<div id="F" class="box col"><h1>F</h1></div>
-			<div id="G" class="box col"><h1>G</h1></div>
-			<div id="H" class="box col"><h1>H</h1></div>
+			<div id="E" class="box col"><h1>Aelay Cricket Club - ACC</h1></div>
+			<div id="F" class="box col"><h1>Vantha Vettuvom</h1></div>
+			<div id="G" class="box col"><h1>Ellaam Kirubai</h1></div>
+			<div id="H" class="box col"><h1>Akkamala Energy Boys</h1></div>
 		</div>
 	</div>
+</div>
+
+<!-- 	<div id="content">
+  Hello World
+  <br /> I love confetti!
+  <br />
+  <div class="buttonContainer">
+    <button id="stopButton">Stop Confetti</button>
+    <button id="startButton">Drop Confetti</button>
+  </div>
+</div>
+<div> -->
 </body>
 </html>
