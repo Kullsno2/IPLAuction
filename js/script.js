@@ -104,6 +104,26 @@ $(document).ready(function(){
         });
 
 
+        $.ajax({
+	        type: 'GET',
+	        url: '/I',
+	        success: function(data)
+	        {
+	            createTable('I',data);
+	        }
+        });
+
+
+        $.ajax({
+	        type: 'GET',
+	        url: '/J',
+	        success: function(data)
+	        {
+	            createTable('J',data);
+	        }
+        });
+
+
 	});
 
 

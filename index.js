@@ -12,11 +12,11 @@ app.use(express.static(path.join(__dirname)));
 const uri = encodeURI(keys.mongoURI);
 
 app.get('/',(req,res)=> {
-	res.sendFile(path.join(__dirname+'/auction.html'));
+	res.sendFile(path.join(__dirname+'/teamlist.html'));
 });
 
-app.get('/teamlist',(req,res)=> {
-	res.sendFile(path.join(__dirname+'/teamlist.html'));
+app.get('/hammer',(req,res)=> {
+	res.sendFile(path.join(__dirname+'/auction.html'));
 });
 
 app.post('/sold',(req,res)=>{
@@ -153,6 +153,30 @@ app.get('/H',(req,res)=>{
 			throw err;
 		var dbo = db.db("auction");
 		const data = await dbo.collection('H').find().toArray();
+		res.send(data);
+		db.close();
+	});
+	
+});
+
+app.get('/I',(req,res)=>{
+	MongoClient.connect(uri,async function(err,db){
+		if(err)
+			throw err;
+		var dbo = db.db("auction");
+		const data = await dbo.collection('I').find().toArray();
+		res.send(data);
+		db.close();
+	});
+	
+});
+
+app.get('/J',(req,res)=>{
+	MongoClient.connect(uri,async function(err,db){
+		if(err)
+			throw err;
+		var dbo = db.db("auction");
+		const data = await dbo.collection('J').find().toArray();
 		res.send(data);
 		db.close();
 	});

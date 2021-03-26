@@ -92,6 +92,15 @@ tr.header {
 	background: #f16939;
 }
 
+#I table th {
+	background: #e30613;
+	color: white
+}
+
+#J table th {
+	background: #f0c402;
+}
+
 th:nth-of-type(odd) {
 	background: #2980b9;
 }
