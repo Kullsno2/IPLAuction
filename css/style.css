@@ -62,18 +62,18 @@ tr.header {
 	background: #ea6153;
 }
 #A table th {
-	background: #f0c402;
+	background: #512e6d;
+	color: white;
 }
 #B table th {
-	background: #0253a0;
+	background: #FF3F6C;
 	color: white;
 }
 #C table th {
-	background: #e30613;
-	color: white;
+	background: #f0c402;
 }
 #D table th {
-	background: #512e6d;
+	background: #f16939;
 	color: white;
 }
 #E table th {
@@ -81,15 +81,16 @@ tr.header {
 	color: white;
 }
 #F table th {
-	background: #ef274f;
+	background: #03A13F;
 	color: white;
 }
 #G table th {
-	background: #034da0;
+	background: #ef274f;
 	color: white;
 }
 #H table th {
-	background: #f16939;
+	background: #0161a3;
+	color: white;
 }
 
 #I table th {
